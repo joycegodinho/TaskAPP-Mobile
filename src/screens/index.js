@@ -1,5 +1,5 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -7,7 +7,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Feed from './feed';
 import Todo from './todo';
 import Done from './done';
-import TaskScreen from './task'
+import TaskScreen from './task';
+
+import AuthLoading from './authloading';
+import SignIn from './signin';
+import SignUp from './signup';
+import Settings from './settings';
+
+// navigation stacks
 
 const FeedStack = createStackNavigator({
     Feed: Feed,
@@ -21,8 +28,15 @@ const DoneStack = createStackNavigator({
     Done: Done,
     Task: TaskScreen
 });
+const AuthStack = createStackNavigator({
+    SignIn: SignIn,
+    SignUp: SignUp
+});
+const SettingsStack = createStackNavigator({
+    Settings: Settings,
+});
 
-
+// navigation tabs
 const TabNavigator = createBottomTabNavigator({
     FeedScreen: {
         screen: FeedStack,
@@ -51,6 +65,29 @@ const TabNavigator = createBottomTabNavigator({
             )
         }
     },
+    Settings: {
+        screen: SettingsStack,
+        navigationOptions: {
+            tabBarLabel: 'Settings',
+            tabBarIcon: ({ tintColor }) => (
+                <MaterialCommunityIcons name="account" size={24} color={tintColor} />
+            )
+        }
+    },
 })
 
-export default createAppContainer(TabNavigator)
+// swich screens navigation 
+
+const SwitchNavigator = createSwitchNavigator (
+    {
+        AuthLoading: AuthLoading,
+        Auth: AuthStack,
+        App: TabNavigator
+    },
+    {
+        initialRouteName: 'AuthLoading'
+    }
+)
+
+
+export default createAppContainer(SwitchNavigator);

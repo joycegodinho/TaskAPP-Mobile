@@ -23,8 +23,7 @@ const GET_TASKS = gql`
 const Feed = props => {
 
     const { data, loading, error } = useQuery(GET_TASKS); 
-    console.log(error)
-    console.log(data)
+
 
     if (loading) return <Text>Loading...</Text>
     if (error) return <Text>Error!</Text>
