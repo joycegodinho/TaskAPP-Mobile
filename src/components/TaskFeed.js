@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Task from './Task'
 
@@ -28,6 +29,33 @@ const Separator = styled.View`
     background-color: #ced0ce
 `
 
+const AddButtom = styled.TouchableOpacity`
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    height: 55px;
+
+    background-color: #82B7DC;
+    background-color: #82B7DC;
+    border-radius: 100px;
+    color: #000000;
+    border: 1px solid #B8B8B9;
+    elevation: 6;
+`
+
+const LinkOptions = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 30%;
+    margin-left:80px;
+    color: #616161;
+    
+`;
+
 const NoteFeed = props => {
     return (
         <View>
@@ -38,9 +66,27 @@ const NoteFeed = props => {
                 renderItem={({ item }) => (
                     <TaskView>
                         <Task task={item} />
+                        <LinkOptions>
+                            <TouchableOpacity
+                                onPress={() => 
+                                    props.navigation.navigate('Edit', { id: item.id })
+                                } 
+                            >
+                                <MaterialCommunityIcons color='#616161' name="pencil-outline" size={18}/>
+                            </TouchableOpacity>                        
+                        </LinkOptions>
                     </TaskView>
                 )}
             />
+            {props.title === 'Feed' && (
+                <AddButtom
+                    onPress={() => 
+                    props.navigation.navigate('New')
+                    }
+                >
+                    <MaterialCommunityIcons color='#FFFFFF' name="pencil-plus-outline" size={32}/>
+                </AddButtom>
+            )}
         </View>
     )
 }

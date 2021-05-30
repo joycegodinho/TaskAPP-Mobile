@@ -9,6 +9,9 @@ import Todo from './todo';
 import Done from './done';
 import TaskScreen from './task';
 
+import New from './newtask';
+import Edit from './edit'
+
 import AuthLoading from './authloading';
 import SignIn from './signin';
 import SignUp from './signup';
@@ -18,7 +21,9 @@ import Settings from './settings';
 
 const FeedStack = createStackNavigator({
     Feed: Feed,
-    Task: TaskScreen
+    Task: TaskScreen,
+    New: New,
+    Edit: Edit
 });
 const TodoStack = createStackNavigator({
     Todo: Todo,
