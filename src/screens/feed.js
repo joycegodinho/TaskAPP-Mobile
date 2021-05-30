@@ -1,14 +1,36 @@
 import React from 'react';
 import { Text, View, Button } from 'react-native';
+import { useQuery, gql } from '@apollo/client';
+
+import TaskFeed from '../components/TaskFeed';
+
+const GET_TASKS = gql`
+    query allTasks {
+            allTasks {
+                id
+                createdAt
+                updatedAt
+                content
+                completed
+                author {
+                    username
+                    id
+                }
+            }
+        }
+`;
 
 const Feed = props => {
+
+    const { data, loading, error } = useQuery(GET_TASKS); 
+    console.log(error)
+    console.log(data)
+
+    if (loading) return <Text>Loading...</Text>
+    if (error) return <Text>Error!</Text>
+
     return (
-        <View style={{ flex:1, justifyContent: 'center', alignItems:'center' }}>
-            <Text>Taks Feed</Text>
-            <Button title="Keep reading"
-                    onPress = {() => props.navigation.navigate('Task')} 
-            />
-        </View>
+        <TaskFeed tasks={data.allTasks} navigation={props.navigation} />
         
     )
 }
