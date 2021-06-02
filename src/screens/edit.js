@@ -72,7 +72,7 @@ const EditTask = props => {
 
     const id = props.navigation.getParam('id');
   
-    const [data, { loading, error }] = useMutation(EDIT_TASK, { variables: { id },
+    const [data, { loading, error }] = useMutation(EDIT_TASK, { variables: { id: id },
         refetchQueries: [{ query: GET_TASKS, query: GET_TODO, query: GET_DONE }]
       });
     if(loading) return <Loading />

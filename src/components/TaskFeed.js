@@ -3,7 +3,8 @@ import { FlatList, View, Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import Task from './Task'
+import Task from './Task';
+import DeleteTask from './DeleteTask'
 
 const tasks = [
     { id: 0, content: 'note 00'},
@@ -53,27 +54,55 @@ const LinkOptions = styled.View`
     width: 30%;
     margin-left:80px;
     color: #616161;
-    
 `;
 
+const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+
+
 const NoteFeed = props => {
+
+    const [refreshing, setRefreshing] = useState(false);
+    
+      
+    const onRefresh = () => {
+        setRefreshing(true);
+        wait(3000).then(() => setRefreshing(false));     
+      };
+
     return (
         <View>
             <FlatList
                 data={props.tasks}
                 keyExtractor={({ id }) => id.toString()}
                 ItemSeparatorComponent={() => <Separator />}
+                refreshing={refreshing}
+                onRefresh={onRefresh}
                 renderItem={({ item }) => (
                     <TaskView>
                         <Task task={item} />
                         <LinkOptions>
+
+                            <TouchableOpacity 
+                                onPress={() => 
+                                    props.navigation.navigate('Task', { id: item.id })
+                                }
+                            >
+                                <MaterialCommunityIcons color='#616161' name="note-outline" size={18}/>
+                            </TouchableOpacity>
+
                             <TouchableOpacity
                                 onPress={() => 
                                     props.navigation.navigate('Edit', { id: item.id })
                                 } 
                             >
                                 <MaterialCommunityIcons color='#616161' name="pencil-outline" size={18}/>
-                            </TouchableOpacity>                        
+                            </TouchableOpacity>   
+
+                            <DeleteTask taskId={item.id} navigation={props.navigation} />
+
+
                         </LinkOptions>
                     </TaskView>
                 )}

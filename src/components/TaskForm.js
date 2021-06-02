@@ -58,19 +58,20 @@ const StyledImage = styled.Image`
 `
 
 const GET_TASK = gql`
-    query task($id: ID!) {
+    query task($id:ID!) {
         task(id: $id) {
             id
             createdAt
+            updatedAt
             content
-            favoriteCount 
+            completed
             author {
                 username
                 id
             }
         }
     }
-`;
+`
 
 const TaskForm = props => {
     const id = props.id
@@ -80,9 +81,9 @@ const TaskForm = props => {
     const [content, setContent] = useState();
     const [completed, setCompleted] = useState();
 
-    const { data, loading, error } = useQuery(GET_TASK, { variables: { id }});
+    const { data, loading, error } = useQuery(GET_TASK, { variables: { id:id }});
    
-    console.log(error)
+    console.log(data)
     
     if(loading) return <Text></Text>
     
@@ -109,6 +110,7 @@ const TaskForm = props => {
                     {props.formType ==='Edit' ? (
                         <StyledInput onChangeText={setContent} 
                             value={content}
+                            defaultValue={data.task.content.toString()}
                          
                                             
                         />
