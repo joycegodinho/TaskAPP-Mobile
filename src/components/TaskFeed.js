@@ -20,8 +20,13 @@ const tasks = [
 ];
 
 const TaskView = styled.View`
-    height: 100px;
-    overflow: hidden;
+    height: auto; 
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
     margin-bottom: 10px;
 `
 const Separator = styled.View`
@@ -49,10 +54,11 @@ const AddButtom = styled.TouchableOpacity`
 
 const LinkOptions = styled.View`
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     justify-content: space-between;
-    width: 30%;
-    margin-left:80px;
+    width: auto;
+    margin-right:10px;
+    margin-top:10px;
     color: #616161;
 `;
 
