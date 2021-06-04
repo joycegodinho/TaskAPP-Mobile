@@ -19,18 +19,51 @@ const tasks = [
     { id: 9, content: 'note 09'}
 ];
 
+const getBackgroundColor = () => {
+    var colors = ["#E3E3FF","#DFF2FD","#E2FCE6","#FCFADE","#FFEEE2","#FFDBDB", "#FDDFDF", "#F0DEFD"];
+    var len = colors.length;
+    var randomNum = Math.floor(Math.random()*len);
+    var color = colors[randomNum];
+    colors.splice(randomNum, 1);
+    return color;
+}
+
+
 const TaskView = styled.View`
     height: auto; 
+    width: auto;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
 
-    margin-bottom: 10px;
+    margin: 12px;
+
+    padding-top: 0.7px;
+    padding-bottom: 2px;
+    padding-left: 1.8px;
+    padding-right: 1.5px;
+
+    border-right-width: 1px;
+    border-right-color: #ced0ce;
+
+    border-top-width: 1px;
+    border-top-color: #ced0ce;
+
+    border-left-width: 1px;
+    border-left-color: #ced0ce;
+
+    border-bottom-width: 1px;
+    border-bottom-color: #ced0ce;
+
+    border-radius: 10px;
+
+    background-color: ${getBackgroundColor};
+
+    elevation: 6;
 `
 const Separator = styled.View`
-    height: 1px;
+    height: 0px;
     width: 100%;
     background-color: #ced0ce
 `
@@ -58,7 +91,8 @@ const LinkOptions = styled.View`
     justify-content: space-between;
     width: auto;
     margin-right:10px;
-    margin-top:10px;
+    margin-top:12px;
+    margin-bottom:10px;
     color: #616161;
 `;
 
@@ -95,7 +129,7 @@ const NoteFeed = props => {
                                     props.navigation.navigate('Task', { id: item.id })
                                 }
                             >
-                                <MaterialCommunityIcons color='#616161' name="note-outline" size={18}/>
+                                <MaterialCommunityIcons color='#616161' name="sticker-check-outline" size={18}/>
                             </TouchableOpacity>
 
                             <TouchableOpacity
@@ -103,7 +137,7 @@ const NoteFeed = props => {
                                     props.navigation.navigate('Edit', { id: item.id })
                                 } 
                             >
-                                <MaterialCommunityIcons color='#616161' name="pencil-outline" size={18}/>
+                                <MaterialCommunityIcons color='#616161' name="square-edit-outline" size={18}/>
                             </TouchableOpacity>   
 
                             <DeleteTask taskId={item.id} navigation={props.navigation} />
@@ -119,7 +153,7 @@ const NoteFeed = props => {
                     props.navigation.navigate('New')
                     }
                 >
-                    <MaterialCommunityIcons color='#FFFFFF' name="pencil-plus-outline" size={32}/>
+                    <MaterialCommunityIcons color='#FFFFFF' name="sticker-plus-outline" size={32}/>
                 </AddButtom>
             )}
         </View>

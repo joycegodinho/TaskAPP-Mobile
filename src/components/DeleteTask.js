@@ -72,7 +72,7 @@ const DeleteTask = props => {
         onPress={() => {deleteTask(); props.navigation.navigate('Feed')}
         } 
     >
-        <MaterialCommunityIcons color='#616161' name="circle-off-outline" size={17}/>
+        <MaterialCommunityIcons color='#616161' name="sticker-remove-outline" size={17}/>
     </TouchableOpacity>
   )
 };

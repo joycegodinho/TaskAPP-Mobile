@@ -3,6 +3,7 @@ import { ScrollView, Text, TouchableOpacity, Image } from 'react-native';
 import styled from 'styled-components/native';
 import Markdown from 'react-native-markdown-renderer';
 import { format } from 'date-fns';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 
@@ -45,7 +46,7 @@ const StyledName = styled.Text`
 `
 
 const StyledTime = styled.Text`
-    color: #616161;
+    color: #9F9F9F;
     margin-left:30px
     
 `
@@ -71,7 +72,7 @@ const Task = props => {
             <TaskLayout>
                 <ImageLayout>
 
-                <StyledImage source={require('../images/profile-placeholder.jpg')} />
+                <MaterialCommunityIcons color='#FFFFFF' name="checkbox-marked-circle-outline" size={50}/>
 
                 </ImageLayout>
 

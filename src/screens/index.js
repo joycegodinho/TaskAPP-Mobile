@@ -48,7 +48,7 @@ const TabNavigator = createBottomTabNavigator({
         navigationOptions: {
             tabBarLabel: 'Feed',
             tabBarIcon: ({ tintColor }) => (
-                <MaterialCommunityIcons name="home" size={24} color={tintColor} />
+                <MaterialCommunityIcons name="home-outline" size={28} color={tintColor} />
             )
         }
     },
@@ -57,7 +57,7 @@ const TabNavigator = createBottomTabNavigator({
         navigationOptions: {
             tabBarLabel: 'To Do',
             tabBarIcon: ({ tintColor }) => (
-                <MaterialCommunityIcons name="calendar-outline" size={24} color={tintColor} />
+                <MaterialCommunityIcons name="calendar-heart" size={24} color={tintColor} />
             )
         }
     },
@@ -75,7 +75,7 @@ const TabNavigator = createBottomTabNavigator({
         navigationOptions: {
             tabBarLabel: 'Settings',
             tabBarIcon: ({ tintColor }) => (
-                <MaterialCommunityIcons name="account" size={24} color={tintColor} />
+                <MaterialCommunityIcons name="account-settings-outline" size={28} color={tintColor} />
             )
         }
     },
