@@ -33,7 +33,8 @@ const Done = props => {
 }
 
 Done.navigationOptions = {
-    title: 'Done'
+    title: 'Done',
+    header: false,
 }
 
 export default Done;

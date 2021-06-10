@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { RefreshControl, SafeAreaView, ScrollView, Text, View, Button, TouchableOpacity } from 'react-native';
+import { RefreshControl, SafeAreaView, ScrollView, Text, View, Button, TouchableOpacity, StatusBar } from 'react-native';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from 'apollo-link-context';
 import * as SecureStore from 'expo-secure-store';
@@ -37,6 +37,10 @@ const Main = () => {
 
   return (
       <ApolloProvider client={client}>
+        <StatusBar 
+          backgroundColor='powderblue'  
+          barStyle='light-content' 
+        />
         <Screens /> 
       </ApolloProvider>
     

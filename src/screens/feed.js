@@ -36,7 +36,8 @@ const Feed = props => {
 }
 
 Feed.navigationOptions = {
-    title: 'Feed'
+    title: 'Feed',
+    header: false,
 }
 
 export default Feed;

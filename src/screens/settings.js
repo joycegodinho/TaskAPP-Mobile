@@ -12,7 +12,8 @@ const Settings = props => {
 }
 
 Settings.navigationOptions = {
-    title: 'Settings'
+    title: 'Settings',
+    header: false,
 };
 
 export default Settings;

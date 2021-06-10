@@ -120,19 +120,19 @@ const TaskForm = props => {
                             placeholder="Type your MarkUp task..."                    
                         />
                     )}
-                    <Text>Completed: 
+                    <Text>Completed: </Text>
                         <Picker
                             style={{ height: 50, width: 150 }}
                             onValueChange={setCompleted}
-                            placeHolder="select"
                             value={completed}
                         >
-                            <Picker.Item label="None" value="null" />
+                            
                             <Picker.Item label="False" value="False" />
                             <Picker.Item label="True" value="True" />
+                            <Picker.Item label="None" value="null" />
 
                         </Picker>
-                    </Text>
+                    
                 </ContentLayout>
 
 

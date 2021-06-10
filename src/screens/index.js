@@ -1,8 +1,9 @@
 import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { TabViewVertical } from 'react-native-vertical-tab-view'
 
 import Feed from './feed';
 import Todo from './todo';
@@ -42,15 +43,31 @@ const SettingsStack = createStackNavigator({
 });
 
 // navigation tabs
-const TabNavigator = createBottomTabNavigator({
+const TabNavigator = createMaterialTopTabNavigator({
+    
+
+
+    
     FeedScreen: {
         screen: FeedStack,
         navigationOptions: {
-            tabBarLabel: 'Feed',
+            
+            tabBarLabel: 'Home',
+            alignItems: 'bottom',
+            
             tabBarIcon: ({ tintColor }) => (
                 <MaterialCommunityIcons name="home-outline" size={28} color={tintColor} />
-            )
-        }
+            ),
+            tabBarOptions: {
+                showIcon: true,
+                labelStyle: { fontSize: 12 },
+                tabStyle: { height: 70 },
+                style: { backgroundColor: 'powderblue' },
+            }
+            
+        },
+
+        
     },
     TodoScreen: {
         screen: TodoStack,
@@ -58,7 +75,13 @@ const TabNavigator = createBottomTabNavigator({
             tabBarLabel: 'To Do',
             tabBarIcon: ({ tintColor }) => (
                 <MaterialCommunityIcons name="calendar-heart" size={24} color={tintColor} />
-            )
+            ),
+            tabBarOptions: {
+                showIcon: true,
+                labelStyle: { fontSize: 12 },
+                tabStyle: { height: 70 },
+                style: { backgroundColor: 'powderblue' },    
+            }
         }
     },
     DoneScreen: {
@@ -67,7 +90,13 @@ const TabNavigator = createBottomTabNavigator({
             tabBarLabel: 'Done',
             tabBarIcon: ({ tintColor }) => (
                 <MaterialCommunityIcons name="calendar-check-outline" size={24} color={tintColor} />
-            )
+            ),
+            tabBarOptions: {
+                showIcon: true,
+                labelStyle: { fontSize: 12 },
+                tabStyle: { height: 70 },
+                style: { backgroundColor: 'powderblue' },  
+            }
         }
     },
     Settings: {
@@ -76,7 +105,13 @@ const TabNavigator = createBottomTabNavigator({
             tabBarLabel: 'Settings',
             tabBarIcon: ({ tintColor }) => (
                 <MaterialCommunityIcons name="account-settings-outline" size={28} color={tintColor} />
-            )
+            ),
+            tabBarOptions: {
+                showIcon: true,
+                labelStyle: { fontSize: 12 },
+                tabStyle: { height: 70 },
+                style: { backgroundColor: 'powderblue' },
+            }
         }
     },
 })

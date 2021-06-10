@@ -35,7 +35,8 @@ const Todo = props => {
 }
 
 Todo.navigationOptions = {
-    title: 'To Do'
+    title: 'To Do',
+    header: false,
 }
 
 export default Todo;
