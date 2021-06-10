@@ -77,12 +77,12 @@ const AddButtom = styled.TouchableOpacity`
     right: 20px;
     height: 55px;
 
-    background-color: #82B7DC;
-    background-color: #82B7DC;
+    background-color: powderblue;
+    
     border-radius: 100px;
     color: #000000;
-    border: 1px solid #B8B8B9;
-    elevation: 6;
+    border: 0.5px solid #B8B8B9;
+    elevation: 2;
 `
 
 const LinkOptions = styled.View`

@@ -4,6 +4,15 @@ import { Picker } from '@react-native-community/picker'
 import styled from 'styled-components/native';
 import { gql, useQuery, useMutation } from '@apollo/client';
 
+const getBackgroundColor = () => {
+    var colors = ["#E3E3FF","#DFF2FD","#E2FCE6","#FCFADE","#FFEEE2","#FFDBDB", "#FDDFDF", "#F0DEFD"];
+    var len = colors.length;
+    var randomNum = Math.floor(Math.random()*len);
+    var color = colors[randomNum];
+    colors.splice(randomNum, 1);
+    return color;
+};
+
 const FormView = styled.View`
     padding: 10px;
     padding-top:20px
@@ -11,17 +20,21 @@ const FormView = styled.View`
 
 const StyledInput = styled.TextInput`
     font-size: 18px;
-    padding: 0px;
-    width: 90%;
-    height: 70%;
+    height: 68%;
     text-align-vertical: top;
+
+
+    
+
+   
 `
 const FormButton = styled.TouchableOpacity`
-    background: #0077E7;
+    background: powderblue;
     width: 40%;
     padding: 8px;
     margin-left: 30%;
-    border-radius: 25;
+    border-radius: 25px;
+    elevation:2
 `
 const ButtonText = styled.Text`
     text-align: center;
@@ -31,30 +44,41 @@ const ButtonText = styled.Text`
 `
 
 const NoteLayout = styled.View`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-`
-
-const ImageLayout = styled.View`
-  
-    width: 60px;
-    margin-left:10px
-    height: auto; 
+    align-items: center
+    width: auto;
 `
 
 const ContentLayout = styled.View`
-    width: 85%; 
-    height: auto; 
+
+    margin: 12px;
+    margin-top: 30px
+
+    width: 300px;
+    height: 65%;
     
-`
 
-const StyledImage = styled.Image`
-    width: 45px; 
-    height: 45px; 
-    border-radius: 45;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 1.5px;
 
+    border-right-width: 1px;
+    border-right-color: #ced0ce;
+
+    border-top-width: 1px;
+    border-top-color: #ced0ce;
+
+    border-left-width: 1px;
+    border-left-color: #ced0ce;
+
+    border-bottom-width: 1px;
+    border-bottom-color: #ced0ce;
+
+    border-radius: 10px;
+
+    background-color: ${getBackgroundColor};
+    elevation: 2
+    
 `
 
 const GET_TASK = gql`
@@ -102,10 +126,6 @@ const TaskForm = props => {
 
             <NoteLayout>
 
-                <ImageLayout>
-                    <StyledImage source={require('../images/profile-placeholder.jpg')} /> 
-                </ImageLayout>
-
                 <ContentLayout>
                     {props.formType ==='Edit' ? (
                         <StyledInput onChangeText={setContent} 
@@ -120,18 +140,23 @@ const TaskForm = props => {
                             placeholder="Type your MarkUp task..."                    
                         />
                     )}
-                    <Text>Completed: </Text>
+                    
+                    <View>
+                        <Text> Completed? </Text>
                         <Picker
                             style={{ height: 50, width: 150 }}
-                            onValueChange={setCompleted}
-                            value={completed}
+                            onValueChange={(itemValue, itemIndex) =>setCompleted(itemValue)}
+                            selectedValue={completed}
+                            itemStyle={{ backgroundColor: "grey", color: "blue", fontFamily:"Ebrima", fontSize:17 }}
                         >
                             
                             <Picker.Item label="False" value="False" />
                             <Picker.Item label="True" value="True" />
-                            <Picker.Item label="None" value="null" />
+                            <Picker.Item label="None" value="" />
 
                         </Picker>
+                    </View>
+
                     
                 </ContentLayout>
 

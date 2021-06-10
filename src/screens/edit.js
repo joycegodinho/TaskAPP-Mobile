@@ -84,4 +84,9 @@ const EditTask = props => {
     )
 };
 
+EditTask.navigationOptions = {
+    title: 'Edit',
+    header: false,
+}
+
 export default EditTask;

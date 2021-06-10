@@ -82,4 +82,9 @@ const NewTask = props => {
     )
 };
 
+NewTask.navigationOptions = {
+    title: 'New',
+    header: false,
+}
+
 export default NewTask;
