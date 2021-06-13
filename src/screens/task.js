@@ -1,8 +1,10 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
-import Task from '../components/Task';
 import styled from 'styled-components/native';
+
+import Loading from '../components/Loading';
+import Task from '../components/Task';
 
 const getBackgroundColor = () => {
     var colors = ["#dfe7f5", "#eff3fa", "#e7edf7"];
@@ -64,7 +66,7 @@ const TaskScreen = props => {
     const id = props.navigation.getParam('id')
     const { loading, error, data } =useQuery(GET_TASK, { variables: { id } });
 
-    if (loading) return <Text>Loading...</Text>
+    if (loading) return <Loading />
     if (error) return <Text>Error!</Text>
 
     return (

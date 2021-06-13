@@ -22,7 +22,7 @@ const tasks = [
 //var colors = ["#E3E3FF","#DFF2FD","#E2FCE6","#FCFADE","#FFEEE2","#FFDBDB", "#FDDFDF", "#F0DEFD"];
 
 const getBackgroundColor = () => {
-    var colors = ["#dfe7f5", "#eff3fa", "#e7edf7"];
+    var colors = ["#eff3fa", "#e7edf7"];
     var len = colors.length;
     var randomNum = Math.floor(Math.random()*len);
     var color = colors[randomNum];
@@ -88,8 +88,8 @@ const AddButtom = styled.TouchableOpacity`
     
     border-radius: 100px;
     color: #000000;
-    border: 0.9px solid #B8B8B9;
-    elevation: 2;
+    border: 1.5px solid #B8B8B9;
+    elevation: 4;
 `
 
 const LinkOptions = styled.View`
@@ -100,6 +100,7 @@ const LinkOptions = styled.View`
     margin-right:10px;
     margin-top:15px;
     margin-bottom:12px;
+    margin-left: 0px;
     color: #616161;
 `;
 
@@ -176,11 +177,11 @@ const NoteFeed = props => {
                 ItemSeparatorComponent={() => <Separator />}
                 refreshing={refreshing}
                 onRefresh={onRefresh}
-                renderItem={({ item }) => (
+                renderItem={({ item, index }) => (
                   
                     <TaskView>
                         
-                        <Task task={item}  />
+                        <Task task={item} index={index}  />
                         <LinkOptions>
 
                             <TouchableOpacity 

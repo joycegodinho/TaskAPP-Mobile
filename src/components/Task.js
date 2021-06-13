@@ -104,7 +104,7 @@ const Task = props => {
 
                         <ViewName>
                             <StyledName>
-                                Task 
+                                Task {props.index + 1}
                             </StyledName>
                             
                         </ViewName>

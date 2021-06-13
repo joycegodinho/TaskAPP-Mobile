@@ -22,6 +22,7 @@ const StyledInput = styled.TextInput`
     font-size: 18px;
     height: 68%;
     text-align-vertical: top;
+    margin-right: 5px;
 `
 const FormButton = styled.TouchableOpacity`
     background: #67bdb6;
@@ -47,6 +48,7 @@ const ContentLayout = styled.View`
 
     margin: 12px;
     margin-top: 30px
+  
 
     width: 300px;
     height: 65%;
@@ -82,7 +84,7 @@ const StyledStatus = styled.View`
     padding-top: 0.7px;
     padding-bottom: 0.7px;
     padding-left: 2.5px;
-    padding-right: auto;
+    padding-right: 2.5px;
     width: 36%
 `
 
@@ -141,6 +143,7 @@ const TaskForm = props => {
                     {props.formType ==='Edit' ? (
                         <StyledInput onChangeText={setContent} 
                             value={content}
+                            multiline={true}
                             defaultValue={data.task.content.toString()}
                          
                                             
@@ -148,13 +151,14 @@ const TaskForm = props => {
                     ):(
                         <StyledInput onChangeText={setContent} 
                             value={content}
+                            multiline={true}
                             placeholder="Type your MarkUp task..."                    
                         />
                     )}
                     
                     <View>
                         <StyledStatus>
-                            <StyledStatusText>Completed ?</StyledStatusText>
+                            <StyledStatusText>Completed?</StyledStatusText>
                         </StyledStatus>
                         
                         <Picker

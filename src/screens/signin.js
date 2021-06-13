@@ -36,7 +36,8 @@ const SignIn = props => {
 }
 
 SignIn.navigationOptions = {
-    title: 'Sign In'
+    title: 'Sign In',
+    headerColor: 'b0c5e6'
 };
 
 export default SignIn;

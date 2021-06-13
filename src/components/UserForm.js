@@ -7,21 +7,26 @@ const FormView = styled.View`
 `;
 
 const StyledInput = styled.TextInput`
-    border: 1px solid gray;
+    border: 1px solid #9eb1cf;
     border-radius: 5px;
     font-size: 18px;
     padding: 8px;
-    margin-bottom: 24px;
+    margin-top: 24px;
+    background-color: #ffffff
+    elevation: 2
 `
 const FormLabel = styled.Text`
     font-size: 18px;
     font-weight: bold;
 `
 const FormButton = styled.TouchableOpacity`
-    background: #0077cc;
-    width: 100%;
+    background: #67bdb6;
+    width: 40%;
     padding: 8px;
-    border-radius: 5px;
+    margin-left: 30%;
+    border-radius: 25px;
+    elevation:2
+    margin-top: 35px;
 `
 const ButtonText = styled.Text`
     text-align: center;
@@ -35,7 +40,7 @@ const SignUp = styled.TouchableOpacity`
 `
 
 const Link = styled.Text`
-    color: #0077cc;
+    color: #67bdb6;
     font-weight: bold;
 `
 
@@ -58,31 +63,34 @@ const UserForm = props => {
 
     return (
         <FormView>
-            <FormLabel>Email</FormLabel>
+            
             <StyledInput onChangeText={text => setEmail(text)} 
                        value={email} 
                        textContentType="emailAddress"
                        autoCompleteType="email"
                        autoFocus={true}
                        autoCapitalize="none"
+                       placeholder="Email"
             />
             {props.formType === 'signUp' && (
                 <View>
-                    <FormLabel>Username</FormLabel>
+                    
                     <StyledInput onChangeText={text => setUsername(text)} 
                             value={username} 
                             textContentType="username"
                             autoCapitalize="none"
+                            placeholder="Username"
                     />
                 </View>
             )}
 
-            <FormLabel>Password</FormLabel>
+
             <StyledInput onChangeText={text => setPassword(text)} 
                        value={password} 
                        textContentType="password"
                        secureTextEntry={true}
                        autoCapitalize="none"
+                       placeholder="Password"
             />
 
             <FormButton onPress={handleSubmit}>
