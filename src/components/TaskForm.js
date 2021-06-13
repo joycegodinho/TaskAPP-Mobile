@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { gql, useQuery, useMutation } from '@apollo/client';
 
 const getBackgroundColor = () => {
-    var colors = ["#E3E3FF","#DFF2FD","#E2FCE6","#FCFADE","#FFEEE2","#FFDBDB", "#FDDFDF", "#F0DEFD"];
+    var colors = ["#dfe7f5", "#eff3fa", "#e7edf7"];
     var len = colors.length;
     var randomNum = Math.floor(Math.random()*len);
     var color = colors[randomNum];
@@ -22,14 +22,9 @@ const StyledInput = styled.TextInput`
     font-size: 18px;
     height: 68%;
     text-align-vertical: top;
-
-
-    
-
-   
 `
 const FormButton = styled.TouchableOpacity`
-    background: powderblue;
+    background: #67bdb6;
     width: 40%;
     padding: 8px;
     margin-left: 30%;
@@ -58,7 +53,7 @@ const ContentLayout = styled.View`
     
 
     padding-top: 10px;
-    padding-bottom: 2px;
+    padding-bottom: 20px;
     padding-left: 10px;
     padding-right: 1.5px;
 
@@ -77,7 +72,23 @@ const ContentLayout = styled.View`
     border-radius: 10px;
 
     background-color: ${getBackgroundColor};
+    
     elevation: 2
+    
+`
+const StyledStatus = styled.View`
+    background-color: #a8d9d5;
+    border-radius: 5px;
+    padding-top: 0.7px;
+    padding-bottom: 0.7px;
+    padding-left: 2.5px;
+    padding-right: auto;
+    width: 36%
+`
+
+const StyledStatusText = styled.Text`
+    color: #354345;
+    margin-left:6px
     
 `
 
@@ -142,7 +153,10 @@ const TaskForm = props => {
                     )}
                     
                     <View>
-                        <Text> Completed? </Text>
+                        <StyledStatus>
+                            <StyledStatusText>Completed ?</StyledStatusText>
+                        </StyledStatus>
+                        
                         <Picker
                             style={{ height: 50, width: 150 }}
                             onValueChange={(itemValue, itemIndex) =>setCompleted(itemValue)}

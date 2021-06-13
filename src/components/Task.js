@@ -17,13 +17,13 @@ const TaskLayout = styled.View`
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    height: auto; 
+    height: 100%; 
 `
 
 const ImageLayout = styled.View`
   
-    width: 60px;
-    margin-left:10px
+    width: 50px;
+    margin-left:0px
     height: auto; 
 `
 
@@ -33,33 +33,55 @@ const ContentLayout = styled.View`
     
 `
 
-const StyledImage = styled.Image`
-    width: 45px; 
-    height: 45px; 
-    border-radius: 45;
-
-`
-
 const StyledName = styled.Text`
     font-size: 17;
     font-weight: bold;
+    color: #464e5c;
 `
 
 const StyledTime = styled.Text`
-    color: #9F9F9F;
-    margin-left:30px
+    color: #a8d9d5;
+    justify-content: center;
+    margin-left:40px;
+    margin-right: 0px
+`
+const StyledStatus = styled.View`
+    background-color: #a8d9d5;
+    border-radius: 5px;
+    padding-top: 0.7px;
+    padding-bottom: 0.7px;
+    padding-left: 2.5px;
+    padding-right: 2.5px
+`
+const StyledStatusAsw = styled.Text`
+    color: #7cc7c0;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left:5px
+`
+const StyledStatusText = styled.Text`
+    color: #354345;
     
 `
 
 const ViewName = styled.View`
     margin-left:0px;
+    margin-right: 0px
     
 `
 
 const ViewTime = styled.View`
-    margin-right:0px;
+    margin-left:0px;
+    justify-content: center;
+
     width: 15%; 
 `
+const ViewStatus = styled.View`
+    display: flex;
+    align-items: center;
+    flex-direction: row; 
+`
+
 
 const Task = props => {
 
@@ -72,7 +94,7 @@ const Task = props => {
             <TaskLayout>
                 <ImageLayout>
 
-                <MaterialCommunityIcons color='#FFFFFF' name="checkbox-marked-circle-outline" size={50}/>
+                <MaterialCommunityIcons color='#FFFFFF' name="checkbox-marked-circle-outline" size={40}/>
 
                 </ImageLayout>
 
@@ -82,7 +104,7 @@ const Task = props => {
 
                         <ViewName>
                             <StyledName>
-                                {props.task.author.username} {' '}
+                                Task 
                             </StyledName>
                             
                         </ViewName>
@@ -100,7 +122,13 @@ const Task = props => {
                     </Text>
                     <Markdown>{props.task.content}</Markdown>
                     {props.task.completed ?(
-                         <Text>Completed? {props.task.completed}</Text>
+                         <ViewStatus>
+                             <StyledStatus>
+                                <StyledStatusText>Completed:</StyledStatusText>
+                             </StyledStatus>
+                             
+                             <StyledStatusAsw>{props.task.completed}</StyledStatusAsw>     
+                        </ViewStatus>
                     ):(null)}
                    
 

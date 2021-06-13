@@ -19,8 +19,10 @@ const tasks = [
     { id: 9, content: 'note 09'}
 ];
 
+//var colors = ["#E3E3FF","#DFF2FD","#E2FCE6","#FCFADE","#FFEEE2","#FFDBDB", "#FDDFDF", "#F0DEFD"];
+
 const getBackgroundColor = () => {
-    var colors = ["#E3E3FF","#DFF2FD","#E2FCE6","#FCFADE","#FFEEE2","#FFDBDB", "#FDDFDF", "#F0DEFD"];
+    var colors = ["#dfe7f5", "#eff3fa", "#e7edf7"];
     var len = colors.length;
     var randomNum = Math.floor(Math.random()*len);
     var color = colors[randomNum];
@@ -37,7 +39,9 @@ const TaskView = styled.View`
     flex-direction: row;
     justify-content: space-between;
 
-    margin: 12px;
+    margin: 25px;
+    margin-bottom: 5px;
+    margin-top: 20px
 
     padding-top: 0.7px;
     padding-bottom: 2px;
@@ -71,17 +75,20 @@ const Separator = styled.View`
 const AddButtom = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
-    width: 55px;
-    position: absolute;
-    bottom: 30px;
-    right: 20px;
-    height: 55px;
 
-    background-color: powderblue;
+    width: 60px;
+    height: 60px;
+
+    position: absolute;
+
+    bottom: 80px;
+    right: 50px;
+    
+    background-color: #67bdb6;
     
     border-radius: 100px;
     color: #000000;
-    border: 0.5px solid #B8B8B9;
+    border: 0.9px solid #B8B8B9;
     elevation: 2;
 `
 
@@ -91,10 +98,50 @@ const LinkOptions = styled.View`
     justify-content: space-between;
     width: auto;
     margin-right:10px;
-    margin-top:12px;
-    margin-bottom:10px;
+    margin-top:15px;
+    margin-bottom:12px;
     color: #616161;
 `;
+
+const StyledStatus = styled.View`
+    background-color: #bde3df;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 25px;
+    border: 0.5px solid #B8B8B9;
+
+    margin-left:15px;
+    margin-top: 10px
+
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 3.5px;
+    padding-right: 3.5px
+
+    position: absolute;
+    elevation: 4;
+`
+
+const StyledStatusText = styled.Text`
+    color: #FFFFFF;
+    font-weight: bold;
+    
+`
+
+const ViewStatus = styled.View`
+    display: flex;
+    align-items: center;
+    flex-direction: row; 
+    margin: 20px
+    margin-left: 27px
+    margin-bottom: 10px
+`
+
 
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -109,10 +156,20 @@ const NoteFeed = props => {
     const onRefresh = () => {
         setRefreshing(true);
         wait(3000).then(() => setRefreshing(false));     
-      };
+    };
+
+
+ 
 
     return (
+
+        
         <View>
+            <StyledStatus>
+                <StyledStatusText>{props.tasks.length}</StyledStatusText>
+            </StyledStatus>
+            
+
             <FlatList
                 data={props.tasks}
                 keyExtractor={({ id }) => id.toString()}
@@ -120,8 +177,10 @@ const NoteFeed = props => {
                 refreshing={refreshing}
                 onRefresh={onRefresh}
                 renderItem={({ item }) => (
+                  
                     <TaskView>
-                        <Task task={item} />
+                        
+                        <Task task={item}  />
                         <LinkOptions>
 
                             <TouchableOpacity 

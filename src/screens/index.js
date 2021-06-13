@@ -59,10 +59,12 @@ const TabNavigator = createMaterialTopTabNavigator({
                 <MaterialCommunityIcons name="home-outline" size={28} color={tintColor} />
             ),
             tabBarOptions: {
+               
                 showIcon: true,
                 labelStyle: { fontSize: 12 },
                 tabStyle: { height: 70 },
-                style: { backgroundColor: 'powderblue' },
+                style: { backgroundColor: 'b0c5e6' },
+                indicatorStyle: {backgroundColor:'#d3ecea', height: 5}, 
             }
             
         },
@@ -80,7 +82,8 @@ const TabNavigator = createMaterialTopTabNavigator({
                 showIcon: true,
                 labelStyle: { fontSize: 12 },
                 tabStyle: { height: 70 },
-                style: { backgroundColor: 'powderblue' },    
+                style: { backgroundColor: '#b0c5e6' },
+                indicatorStyle: {backgroundColor:'#d3ecea', height: 5}    
             }
         }
     },
@@ -95,7 +98,8 @@ const TabNavigator = createMaterialTopTabNavigator({
                 showIcon: true,
                 labelStyle: { fontSize: 12 },
                 tabStyle: { height: 70 },
-                style: { backgroundColor: 'powderblue' },  
+                style: { backgroundColor: '#b0c5e6' },
+                indicatorStyle: {backgroundColor:'#d3ecea', height: 5}  
             }
         }
     },
@@ -110,7 +114,8 @@ const TabNavigator = createMaterialTopTabNavigator({
                 showIcon: true,
                 labelStyle: { fontSize: 12 },
                 tabStyle: { height: 70 },
-                style: { backgroundColor: 'powderblue' },
+                style: { backgroundColor: '#b0c5e6' },
+                indicatorStyle: {backgroundColor:'#d3ecea', height: 5}
             }
         }
     },

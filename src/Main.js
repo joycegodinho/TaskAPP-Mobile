@@ -38,7 +38,7 @@ const Main = () => {
   return (
       <ApolloProvider client={client}>
         <StatusBar 
-          backgroundColor='powderblue'  
+          backgroundColor='#b0c5e6'  
           barStyle='light-content' 
         />
         <Screens /> 

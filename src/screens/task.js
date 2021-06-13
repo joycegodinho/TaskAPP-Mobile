@@ -5,7 +5,7 @@ import Task from '../components/Task';
 import styled from 'styled-components/native';
 
 const getBackgroundColor = () => {
-    var colors = ["#E3E3FF","#DFF2FD","#E2FCE6","#FCFADE","#FFEEE2","#FFDBDB", "#FDDFDF", "#F0DEFD"];
+    var colors = ["#dfe7f5", "#eff3fa", "#e7edf7"];
     var len = colors.length;
     var randomNum = Math.floor(Math.random()*len);
     var color = colors[randomNum];
@@ -73,6 +73,11 @@ const TaskScreen = props => {
         </TaskView>
   
     )
+};
+
+TaskScreen.navigationOptions = {
+    title: 'Task',
+    header: false,
 }
 
 export default TaskScreen;

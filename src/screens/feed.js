@@ -3,6 +3,7 @@ import { Text, View, Button } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
 
 import TaskFeed from '../components/TaskFeed';
+import Loading from '../components/Loading';
 
 const GET_TASKS = gql`
     query allTasks {
@@ -26,7 +27,7 @@ const Feed = props => {
     console.log(error)
 
 
-    if (loading) return <Text>Loading...</Text>
+    if (loading) return <Loading />
     if (error) return <Text>Error!</Text>
 
     return (
