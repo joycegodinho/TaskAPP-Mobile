@@ -181,7 +181,7 @@ const NoteFeed = props => {
                   
                     <TaskView>
                         
-                        <Task task={item} index={index}  />
+                        <Task task={item} index={index+1}  />
                         <LinkOptions>
 
                             <TouchableOpacity 

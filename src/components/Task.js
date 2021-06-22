@@ -103,9 +103,11 @@ const Task = props => {
                     <Text> 
 
                         <ViewName>
-                            <StyledName>
-                                Task {props.index + 1}
-                            </StyledName>
+                        {props.index? (
+                            <StyledName>Task {props.index}</StyledName>
+                        ): (
+                            <StyledName>Task</StyledName>
+                        )}
                             
                         </ViewName>
 
